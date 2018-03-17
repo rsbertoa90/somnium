@@ -1,61 +1,58 @@
-<?php $current="index.php";?>
+<?php $current="index.php";
+$categorias=[
+  "ion-ios-home-outline",
+  "ion-social-tux",
+  "ion-social-freebsd-devil",
+  "ion-social-snapchat-outline",
+  "ion-social-octocat",
+  "ion-android-favorite",
+  "ion-ios-cloudy-night",
+];
+
+
+?>
+
 <!DOCTYPE html>
 <html>
   <?php require_once("partials/head.php"); ?>
 
   <body>
-    <?php require_once("partials/navbar.php"); ?>
+    <div class="fondo">
+      <div class="container container-fluid">
+        <?php require_once("partials/navbar.php"); ?>
 
-    <div class="container">
-
-      <section id="banner" class="jumbotron jumbotron-fluid row bg-primario">
+        <div class="row bg-primario jumbotron jumbotron-fluid">
           <img src="images/banner.jpg" alt="banner">
-      </section>
+        </div>
 
-      <section  class="row categorias mb-5">
+          <div class="row categorias">
+            <?php foreach ($categorias as $categoria) : ?>
+              <div class="caja-categoria">
+                <div class="icono-categoria">
+                  <span class="<?=$categoria?>"></span>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
 
-      <div class="caja-categoria">
-        <div class="icono-categoria">
-          <span class="ion-ios-home-outline"></span>
-        </div>
+          <?php require_once("partials/footer.php"); ?>
       </div>
-      <div class="caja-categoria">
-        <div class="icono-categoria">
-          <span class="ion-social-tux"></span>
-        </div>
-      </div>
-      <div class="caja-categoria">
-        <div class="icono-categoria">
-          <span class="ion-social-freebsd-devil"></span>
-        </div>
-      </div>
-      <div class="caja-categoria">
-        <div class="icono-categoria">
-          <span class="ion-social-snapchat-outline"></span>
-        </div>
-      </div>
-      <div class="caja-categoria">
-        <div class="icono-categoria">
-          <span class="ion-social-octocat"></span>
-        </div>
-      </div>
-      <div class="caja-categoria">
-        <div class="icono-categoria">
-          <span class="ion-android-favorite"></span>
-        </div>
-      </div>
-      <div class="caja-categoria">
-        <div class="icono-categoria">
-          <span class="ion-ios-cloudy-night"></span>
-        </div>
-      </div>
-
-      </section>
-      <?php require_once("partials/footer.php"); ?>
-  </div>
+    </div>
 
 
 
-  <?php require_once("partials/js-import.php"); ?>
+
+
+
+
+
+
+
+
+
+
+
+    <?php require_once("partials/js-import.php"); ?>
   </body>
+
 </html>

@@ -1,7 +1,6 @@
 <?php
   $navigation=[
-    "index.php"=>"Somnium Sueños";
-    "faq.php"=>"preguntas frecuentes";
+    "index.php"=>"Home",
+    "faq.php"=>"preguntas frecuentes",
   ];
-$current="";
  ?>
