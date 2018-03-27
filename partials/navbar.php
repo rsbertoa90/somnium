@@ -1,4 +1,10 @@
-<?php require_once("modals.php"); ?>
+<?php
+
+require_once("loginModal.php");
+require_once("registerModal.php"); 
+
+
+?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primario">
   <form class="form-inline my-2 my-lg-0 w-100 ">

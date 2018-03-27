@@ -1,6 +1,7 @@
 :root{
   --primario: #e73fd4;
 }
+
 img{
   width: 100%;
 }
@@ -10,6 +11,9 @@ img{
 }
 .bg-primario{
   background-color: var(--primario);
+}
+.text-primario{
+  color:var(--primario);
 }
 .fondo{
   width: 100vw;
@@ -60,4 +64,14 @@ img{
   color: #fff;
   font-size: 1.5em;
   margin-left: 10px;
+}
+.banner{
+  max-width: 960px;
+  display: flex;
+  align-self: center;
+}
+.error-message{
+  font-style: italic;
+  color: #d7011c;
+  font-size: 0.8em;
 }

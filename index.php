@@ -1,4 +1,5 @@
-<?php $current="index.php";
+<?php
+$current="index.php";
 $categorias=[
   "ion-ios-home-outline",
   "ion-social-tux",
@@ -21,8 +22,8 @@ $categorias=[
       <div class="container container-fluid">
         <?php require_once("partials/navbar.php"); ?>
 
-        <div class="row bg-primario jumbotron jumbotron-fluid">
-          <img src="images/banner.jpg" alt="banner">
+        <div class="row bg-primario jumbotron jumbotron-fluid d-flex flex-wrap justify-content-center">
+          <img src="images/banner.jpg" alt="banner" class="banner">
         </div>
 
           <div class="row categorias">
