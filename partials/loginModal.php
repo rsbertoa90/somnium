@@ -1,10 +1,7 @@
 <?php
-if(!isset($_SESSION))
-   {
-       session_start();
-   }
-
+if(!isset($_SESSION)){session_start();}
 require_once("functions.php");
+
 
 if (isset($_GET["modal_id"]) && $_GET["modal_id"]=="login-modal"){
   $erroresLogin = validarLogin($_POST);
@@ -33,13 +30,13 @@ if (isset($_GET["modal_id"]) && $_GET["modal_id"]=="login-modal"){
 
           <div class="form-group">
             <div class="">
-              <input class="form-control form-control-lg"  name="email" type="email" placeholder="TUMAIL@EMAIL.COM">
-              <?php if (isset($errores["email"])): ?>
-                <span class="error-message"><?=$erroresLogin["email"]?></span>
+                <input class="form-control form-control-lg"  name="user" type="text" placeholder="USUARIO O EMAIL">
+              <?php if (isset($erroresLogin["user"])): ?>
+                <span class="error-message"><?=$erroresLogin["user"]?></span>
               <?php endif ?>
             </div>
             <input class="form-control form-control-lg" name="password" type="password" placeholder="PASSWORD">
-            <?php if (isset($errores["password"])):?>
+            <?php if (isset($erroresLogin["password"])):?>
               <span  class="error-message"><?=$erroresLogin["password"]?></span>
             <?php endif ?>
           </div>

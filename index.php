@@ -5,6 +5,7 @@ if(!isset($_SESSION))
    }
 
 $current="index.php";
+
 $categorias=[
   "ion-ios-home-outline",
   "ion-social-tux",

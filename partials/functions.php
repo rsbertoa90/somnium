@@ -1,4 +1,5 @@
 <?php
+
 if(!isset($_SESSION))
    {
        session_start();
@@ -41,20 +42,18 @@ function existeUsername($username){
 function validarLogin($data){
   $errores=[];
 
-  if (!isset($data["email"]) || !$data["email"]){
-    $errores["email"] = "ingresa un email";
+  if (!isset($data["user"]) || !$data["user"]){
+    $errores["user"] = "ingresa un usuario o email valido";
     return $errores;
-  } elseif ( ! filter_var($data["email"] , FILTER_VALIDATE_EMAIL) ) {
-    $errores["email"] = "ingresa un email valido";
-    return $errores;
-  }else {
+  } else {
     $usuarios=traerUsuarios();
     foreach ($usuarios as $usuario) {
-      if ($usuario["email"]==$data["email"]){
-        if (!password_verify($data["password"],$usuario["password"])){
-          $erorres["password"]="El password ingresado es incorrecto";
+      if ($usuario["email"]==$data["user"] || $usuario["username"]==$data["user"]){
+        if ( ! password_verify( $data["password"] , $usuario["password"] ) ) {
+          $errores["password"]="El password ingresado es incorrecto";
+          return $errores;
         }else{
-          $_SESSION["userID"]=$usuario["userId"];
+          $_SESSION["userId"]=$usuario["userId"];
           if (isset($data["recordar"])){
             setcookie("userId",$usuario["userId"],time()+3600);
           }
@@ -95,21 +94,25 @@ function validarRegistro($data){
 }
 
 function nuevoId(){
+
   $todos=traerUsuarios();
+  if(!$todos){return 1;}
   $ultimo=array_pop($todos);
   return $ultmo["userId"]+1;
 }
 
-function guardar($usuario){
-  $usuario=json_encode($usuario);
-  file_put_contents("json/usuarios.json",$usuario.PHP_EOL);
-}
+
 function registrar($data){
   $usuario=[];
-  $usuario["id"]=nuevoId();
+  $usuario["userId"]=nuevoId();
   $usuario["username"]=$data["username"];
   $usuario["email"]=$data["email"];
   $usuario["password"]=password_hash($data["password"],PASSWORD_DEFAULT);
-  guardar($usuario);
+
+  $usuario=json_encode($usuario);
+  file_put_contents("json/usuarios.json",$usuario.PHP_EOL);
+
+  $_SESSION["userId"]=$usuario["userId"];
+  return;
 }
  ?>

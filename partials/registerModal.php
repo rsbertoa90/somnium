@@ -1,11 +1,11 @@
 <?php
-require_once("functions.php");
+
 
 if(isset($_GET["modal_id"]) && $_GET["modal_id"]=="register-modal"){
   $erroresRegister=validarRegistro($_POST);
   if (!$erroresRegister){
-    registrar($_POST);
-    header("location: faq.php");
+    registrar($_POST);    
+    header("location: index.php");
     exit;
   }
 }

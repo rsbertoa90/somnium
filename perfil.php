@@ -1,4 +1,3 @@
-
 <?php
 if(!isset($_SESSION))
    {
@@ -6,3 +5,11 @@ if(!isset($_SESSION))
    }
 
  ?>
+<!DOCTYPE html>
+<html>
+<?php require_once("partials/head.php"); ?>
+
+  <body>
+    <?php require_once("partials/navbar.php"); ?>
+  </body>
+</html>

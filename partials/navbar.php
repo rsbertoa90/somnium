@@ -1,14 +1,17 @@
 <?php
-
+if(!isset($_SESSION)){
+  session_start();
+}
+require_once("functions.php");
 require_once("loginModal.php");
-require_once("registerModal.php"); 
+require_once("registerModal.php");
 
 
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primario">
   <form class="form-inline my-2 my-lg-0 w-100 ">
-    <input class="form-control mr-sm-2 w-75" type="text" placeholder="Search" aria-label="Search">
+    <input class="form-control mr-sm-2 w-75" type="text" placeholder="Busqueda" aria-label="Search">
     <button class="btn btn-primary my-2 my-sm-0" type="submit"> <span class="ion-ios-search-strong text-white"></span> </button>
   </form>
 </nav>
@@ -29,8 +32,13 @@ require_once("registerModal.php");
             </li>
           <?php endforeach; ?>
           <li class="nav-item active">
+          <?php if (isset($_SESSION["userId"])): ?>
+            <a class="nav-link" href="partials/logout.php" >Salir</a>
+          <?php else: ?>
             <a class="nav-link" href="" data-toggle="modal" data-target="#login-modal">ingresa</a>
-          </li>
+          <?php endif; ?>
+        </li>
+
         </ul>
       </div>
 </nav>
