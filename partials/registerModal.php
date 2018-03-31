@@ -1,4 +1,17 @@
+<?php
+require_once("functions.php");
 
+if(isset($_GET["modal_id"]) && $_GET["modal_id"]=="register-modal"){
+  $erroresRegister=validarRegistro($_POST);
+  if (!$erroresRegister){
+    registrar($_POST);
+    header("location: faq.php");
+    exit;
+  }
+}
+
+
+ ?>
 
 <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="register-modalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -15,20 +28,28 @@
 
           <div class="form-group">
               <div class="">
-                <input class="form-control form-control-lg" type="text" name="nombre" placeholder="NOMBRE">
-                <span class="error-message"><?=$errorNombre?></span>
-              </div>
-              <div class="">
-                <input class="form-control form-control-lg" type="text" name="apellido" placeholder="APELLIDO">
-                <span class="error-message"><?=$errorApellido?></span>
+                <input class="form-control form-control-lg" type="text" name="username" placeholder="NOMBRE DE USUARIO">
+                <?php if (isset($erroresRegister["username"])): ?>
+                  <span class="error-message"><?=$erroresRegister["username"]?></span>
+                <?php endif; ?>
               </div>
               <div class="">
                 <input class="form-control form-control-lg" type="email" name="email" placeholder="TUMAIL@EMAIL.COM">
-                <span class="error-message"><?=$errorMail?></span>
+                <?php if (isset($erroresRegister["email"])): ?>
+                  <span class="error-message"><?=$erroresRegister["email"]?></span>
+                <?php endif; ?>
               </div>
               <div class="">
                 <input class="form-control form-control-lg" type="password" name="password" placeholder="UN PASSWORD PARA TU CUENTA">
-                <span class="error-message"><?=$errorPassword?></span>
+                <?php if (isset($erroresRegister["password"])): ?>
+                  <span class="error-message"><?=$erroresRegister["password"]?></span>
+                <?php endif; ?>
+              </div>
+              <div class="">
+                <input class="form-control form-control-lg" type="password" name="repassword" placeholder="CONFIRMAR EL PASSWORD">
+                <?php if (isset($erroresRegister["repassword"])): ?>
+                  <span class="error-message"><?=$erroresRegister["repassword"]?></span>
+                <?php endif; ?>
               </div>
           </div>
             <div class="form-group d-flex justify-content-center">

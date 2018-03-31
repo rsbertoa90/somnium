@@ -1,4 +1,9 @@
 <?php
+if(!isset($_SESSION))
+   {
+       session_start();
+   }
+
 $current="index.php";
 $categorias=[
   "ion-ios-home-outline",

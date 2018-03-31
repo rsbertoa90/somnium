@@ -1,4 +1,9 @@
 <?php
+if(!isset($_SESSION))
+   {
+       session_start();
+   }
+
   $current="faq.php";
   $faq = [
     '¿Qué es Eventr?' => 'Eventr es una plataforma que permite tanto a DJ\'s como a organizadores de eventos encontrarse para generar shows increíbles.',
@@ -53,6 +58,6 @@
 
   <?php require_once("partials/footer.php"); ?>
 
-  <?php require_once("partials/script-imports.php"); ?>
+  <?php require_once("partials/js-import.php"); ?>
   </body>
 </html>
